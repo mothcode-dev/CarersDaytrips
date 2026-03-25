@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Carer's Daytrips - Results</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+</head>
+
+<body class="light-mode">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <img src="/static/images/Logo.png" alt="Carer's Daytrips logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/AboutUs">About Us</a></li>
+      <li><a class="active" href="/TripPlanner" aria-current="page">Trip Planner</a></li>
+      <li><a href="/Contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle-btn" id="toggle-mode" aria-label="Toggle dark/light mode">
+      Dark Mode
+    </button>
+  </nav>
+
+  <main id="main-content">
+
+    <header class="hero">
+      <h1>Your Results</h1>
+      <p>Here are the day trips we found for you. Click any card to find out more.</p>
+    </header>
+
+    <div class="results-wrapper"> <!-- Sets the page content at a max width, centring it -->
+
+      <div class="results-summary" id="resultsSummary"> <!-- Shows a summary of what was searched for and the JS writes the actual location and date into the strong tags after the page loads -->
+        <div class="results-summary-text">
+          Showing results for <strong id="summaryLocation">your area</strong> <!-- Gets replaced with a postcode/location -->
+          on <strong id="summaryDate">your chosen date</strong> <!-- Gets replaced with the picked date -->
+        </div>
+        <div class="results-tags" id="resultsTags"></div> <!-- JS writes filter tags with this - i.e. the category such as museum and the date i.e. 29 Mar -->
+      </div>
+
+      <div class="results-controls"> <!-- Shows how many results were found and the dropdown -->
+        <span class="results-count" id="resultsCount">Loading…</span> <!-- Gets updated after loading or when no trips are found it displays a message -->
+        <div class="results-sort">
+          <label for="sortSelect">Sort by:</label> <!-- Links the label to the dropdown below for accessibility -->
+          <select id="sortSelect" aria-label="Sort results"> <!-- Sort by dropdown - JS will make changes to the grid according to option picked, with the aria-label making it accessible for screen readers -->
+            <option value="default">Recommended</option> <!-- Sorts by default order of database -->
+            <option value="price-asc">Price: Low to High</option> <!-- Uses price_numeric to sort in ascending order -->
+            <option value="price-desc">Price: High to Low</option> <!-- Uses price_numeric to sort in descending order -->
+            <option value="distance">Distance</option> <!-- Sorts by journey_mins from TfL API -->
+            <option value="name">Name A–Z</option> <!-- Sorts by alphabet -->
+          </select>
+        </div>
+      </div>
+
+      <div class="results-grid" id="resultsGrid" aria-live="polite" aria-label="Activity results"> <!-- The grid that JS loads activity cards into, with aria-live=polite indicating to screen readers there is new content -->
+        <div class="skeleton-card" aria-hidden="true"> <!-- Starts with 3 cards as placeholders before data loads in, it's also hidden from screenreaders as they're more of a visual effect rather than any actual content -->
+          <div class="skeleton-img"></div> <!-- Shows an empty image box -->
+          <div class="skeleton-body">
+            <div class="skeleton-line short"></div> <!-- Mimics the Type badge -->
+            <div class="skeleton-line medium"></div> <!-- Mimics the Activity name -->
+            <div class="skeleton-line long"></div> <!-- Mimics the Description -->
+            <div class="skeleton-line long"></div> <!-- Mimics the Second Description -->
+          </div>
+        </div>
+        <div class="skeleton-card" aria-hidden="true">
+          <div class="skeleton-img"></div>
+          <div class="skeleton-body">
+            <div class="skeleton-line short"></div>
+            <div class="skeleton-line medium"></div>
+            <div class="skeleton-line long"></div>
+            <div class="skeleton-line long"></div>
+          </div>
+        </div>
+        <div class="skeleton-card" aria-hidden="true">
+          <div class="skeleton-img"></div>
+          <div class="skeleton-body">
+            <div class="skeleton-line short"></div>
+            <div class="skeleton-line medium"></div>
+            <div class="skeleton-line long"></div>
+            <div class="skeleton-line long"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-empty" id="resultsEmpty" role="status"> <!-- Using an empty state to hide it by default, if no results are returned, role=status indicates to screen readers that no results were found -->
+        <div style="font-size:3rem; margin-bottom:1rem;">🔍</div>
+        <h2>No trips found</h2>
+        <p>We couldn't find any activities matching your search. Try adjusting your filters or choosing a different date.</p>
+        <a class="btn-back" href="TripPlanner.html">Back to Trip Planner</a> <!-- Links back to Trip Planner -->
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <nav class="bottom-navbar" aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/AboutUs">About Us</a>
+      <a href="/TripPlanner" aria-current="page">Trip Planner</a>
+      <a href="/Contact">Contact</a>
+      <a href="mailto:abisky152@gmail.com" class="email-button">Email Us</a>
+    </nav>
+  </footer>
+
+  <script src="/static/script.js"></script>
+
+</body>
+</html>

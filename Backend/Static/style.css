@@ -1,0 +1,1138 @@
+.hidden { /*Hides any element completely, used by JavaScript to show/hide elements by adding/removing this class */
+  display: none;
+}
+
+    :root { /* ':root' targets the very top of the HTML document */
+      --bg:         #f5f2eb; /* For the background */
+      --bg-card:    #ffffff; /* For the background card */
+      --bg-step:    #fffdf8; /* For the background card bodies */
+      --text:       #1a1a2e; /* For the main text */
+      --text-muted: #6b6b80; /* For the hint text */
+      --accent:     #e85d26; /* For the buttons */
+      --accent-2:   #3a7d6e; /* For the badges and as a success indicator */
+      --border:     #ddd8cc; /* For card borders and dividers */
+      --locked:     #e8e4dc; /* For the locked cards */
+      --locked-txt: #aaa59a; /* For the locked step cards text */
+      --shadow:     0 4px 24px rgba(0,0,0,0.07); /* Creates a shadow around the cards */
+      --radius:     16px; /* Border radius for all cards */
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* Creates a curve for animations */
+    }
+
+    body.dark-mode { /* Dark mode variations of the above */
+      --bg:         #111118;
+      --bg-card:    #1c1c28;
+      --bg-step:    #1a1a24;
+      --text:       #eceaf5;
+      --text-muted: #8a8a9a;
+      --accent:     #ff7040;
+      --accent-2:   #4db09e;
+      --border:     #2e2e3e;
+      --locked:     #1e1e2a;
+      --locked-txt: #555568;
+      --shadow:     0 4px 24px rgba(0,0,0,0.3);
+    }
+
+
+     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } /* Applies to every element that includes before and after, adding padding and borders */
+
+    body { 
+      font-family: 'Parkinsans', sans-serif; /* Sets the font */
+      background: var(--bg); /* Background, which changes in light and dark mode */
+      color: var(--text); /* Text, which changes in light and dark mode */
+      min-height: 100vh; /* Ensures the body is always at least as tall as the viewport */
+      transition: background var(--transition), color var(--transition); /* Animates transitions when switching from light to dark mode and vice versa */
+    }
+
+
+    .navbar { 
+      display: flex; /* Lays out the logo, links and button in a row */
+      align-items: center; /* Centres elements to the middle of the bar */
+      justify-content: space-between; /* Pushes the logo to the far left and the button to the far right, with the nav links in the middle */
+      padding: 0 clamp(1rem, 4vw, 3rem); /* No top/bottom padding, but responsive side padding, with 'clamp()' setting a minimum of 1rem, grows with the screen width (4vw) */
+      height: 70px; /* Fixed height, therefore the nav bar is always the same format and styling */
+      background: var(--bg-card); /* Changes background colour depending on light/dark mode */
+      border-bottom: 1px solid var(--border); /* Separates the nav bar from the rest of the page, with a line */
+      position: sticky; /* The navbar stays fixed at the top of the screen as the user scrolls */
+      top: 0; /* Defines where the nav bar sticks, at the very top */
+      z-index: 100; /* Ensures the navbar always appears on top of other page content */
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05); /* Very subtle shadow below the navbar, to further distinguish it from the main page */
+      transition: background var(--transition), border-color var(--transition); /* Animates the background and border colour when switching between light/dark mode */
+    }
+
+    .navbar-logo img { height: 44px; /* Fixed height, creating cohesion */
+       width: auto; /* Width adjusts automatically to maintain the image's original aspect ratio */
+        display: block; /* Removes the small gap that browsers add below inline images by default */
+      } 
+
+    .nav-links {
+      display: flex; /* Displays the list items in a row, to create a nav bar */
+      list-style: none; /* Removes the bullet points */
+      gap: 0.25rem; /* Creates a small gap between each link */
+    }
+
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600; /* Semi-bold text */
+      font-size: 0.85rem; 
+      text-decoration: none; /* Removes the default underline on links */
+      color: var(--text-muted); /* Grey text */
+      padding: 0.45rem 0.9rem; /* Adds clickable area around the text */
+      border-radius: 999px; /* Rounds borders */
+      transition: color 0.2s, background 0.2s; /* Animates the links colour and background on hover */
+    }
+
+    .nav-links a:hover { color: var(--text); /* Darkens the text and adds a light grey background, on hover */
+       background: var(--border); 
+      }
+
+    .nav-links a.active { color: var(--accent) /* Current, active page gets orange text and an orange background  */
+      ; background: color-mix(in srgb, var(--accent) 12%, transparent); 
+    }
+
+    .theme-toggle-btn { 
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--text); /* Inverts the colours according to the mode selected */
+      color: var(--bg); /* Text colour is the opposite of the background */
+      border: none; /* Removes the default browser button border */
+      border-radius: 999px; /* Matches the nav links */
+      padding: 0.45rem 1rem; 
+      cursor: pointer; /* Shows a hand cursor on hover to indicate the links are clickable */
+      white-space: nowrap; /* Prevents the button text from wrapping onto two lines with smaller screens */
+      transition: opacity 0.2s; /* Animates the opacity change on hover */
+    }
+
+    .theme-toggle-btn:hover { opacity: 0.8; /* Slightly fades the button on hover, giving visual feedback to the user */
+    }
+
+
+    .hero {
+      text-align: center; /* Centres all of the text and elements inside hero */
+      padding: clamp(2.5rem, 6vw, 5rem) 1rem clamp(1.5rem, 4vw, 3rem); /* Adds padding, with 'clamp()' making the top and bottom padding responsive */
+    }
+
+    .hero h1 { 
+      font-family: 'Madimi One', sans-serif; /* Defines the font */
+      font-size: clamp(2.2rem, 6vw, 4rem); /* Defines the font size */
+      color: var(--accent); /* Creates the orange branding colourway */
+      letter-spacing: -0.02em; /* Creates slight spacing between the letters */
+      line-height: 1.1; /* Tight line height for heading */
+    }
+
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: var(--text-muted); /* Creates grey text */
+      margin-top: 0.75rem;
+      max-width: 520px; /* Limits the paragraphs getting too wide on large screens */
+      margin-inline: auto; /* centres the paragraph horizontally within the hero */
+    }
+
+      .planner-wrapper {
+      max-width: 680px; /* Constrains the width on mobile so cards don't stretch too wide */
+      margin: 0 auto; /* Centres the wrapper horizontally on the page */
+      padding: 0 clamp(1rem, 4vw, 2rem) 1rem; 
+      display: flex;
+      flex-direction: column; /* Stacks the step cards vertically on mobile */
+      gap: 1rem; /* Space between each step card */
+    }
+
+  
+    @media (min-width: 992px) { /* Switches from single column stack to a two column grid on desktop */
+      .planner-wrapper { 
+        max-width: 1100px; /* Wider width to accommodate desktop */
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* two equal width columns */
+        align-items: start; /* aligns cards to the top of each grid cell */
+        gap: 1.5rem; 
+      }
+
+      .step-card.locked { /* Locked cards look the same as unlocked ones on desktop */
+        background: var(--bg-card);
+        box-shadow: var(--shadow);
+      }
+
+      .step-card.locked .step-number { 
+        background: var(--accent); 
+      } /* These override the mobile locked styles so locked cards look fully active on desktop */
+
+      .step-card.locked .step-title {
+         color: var(--text); 
+        }
+
+      .step-card.locked .step-subtitle {
+         color: var(--text-muted); 
+        }
+
+      .step-card.locked .step-chevron {
+         opacity: 0; pointer-events: none; 
+        } /* Hides the chevron arrow entirely on desktop since accordion toggling is disabled, '—pointer-events:none' also makes it unclickable */
+
+      .step-card.locked .step-header {
+         cursor: default; } /* Changes cursor from 'not-allowed' to the normal arrow since clicking does nothing on desktop */
+
+      .step-body {
+        grid-template-rows: 1fr !important; 
+      } /* Forces all step bodies to always be fully open on desktop */
+      .step-chevron {display: none;} /* Hides the chevron arrow entirely on desktop */
+
+      #step3 {
+        grid-column: 1 / -1;
+      }  /* Makes step 3 span across both columns on desktop */
+    }
+
+
+    .find-activities-bar {
+      display: flex; /* Flex layout so the button can be aligned */
+      justify-content: flex-end; /* Pushes the button to the right hand side */
+      padding: 0.5rem clamp(1rem, 4vw, 2rem) 4rem; 
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .btn-find {
+      background: var(--accent); 
+      color: #fff;
+      font-size: 1rem;
+      padding: 0.9rem 2.2rem; 
+      border-radius: 12px;
+      box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 40%, transparent);
+      transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-find::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.15);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .btn-find:hover:not(:disabled)::after { opacity: 1; }
+    .btn-find:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 50%, transparent);
+    }
+
+    .btn-find:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    @media (max-width: 600px) {
+      .find-activities-bar { justify-content: stretch; }
+      .btn-find { width: 100%; justify-content: center; }
+    }
+
+
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .step-card.locked {
+      background: var(--locked);
+      box-shadow: none;
+    }
+
+    .step-card.completed .step-header {
+      border-left: 4px solid var(--accent-2);
+    }
+
+
+
+     .step-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.4rem;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .step-card:not(.locked) .step-header:hover { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+    .step-card.locked .step-header { cursor: not-allowed; }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Madimi One', sans-serif;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--transition);
+    }
+
+    .step-card.locked .step-number    { background: var(--locked-txt); }
+    .step-card.completed .step-number { background: var(--accent-2); }
+
+    .step-title-group { flex: 1; }
+
+    .step-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      transition: color var(--transition);
+    }
+
+    .step-card.locked .step-title { color: var(--locked-txt); }
+
+    .step-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    .step-card.locked .step-subtitle { color: var(--locked-txt); }
+
+    .step-chevron {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      transition: transform var(--transition), opacity 0.2s;
+      flex-shrink: 0;
+    }
+
+    .step-card.locked .step-chevron { opacity: 0.3; }
+    .step-card.open .step-chevron   { transform: rotate(180deg); 
+    }
+
+
+
+    .step-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows var(--transition);
+    }
+
+    .step-card.open .step-body { grid-template-rows: 1fr; }
+
+    .step-body-inner { overflow: hidden; }
+
+    .step-content {
+      padding: 0 1.4rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+
+     label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-step);
+      color: var(--text);
+      font-family: 'Parkinsans', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+    }
+
+    select option { background: var(--bg-card); }
+
+    .or-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    .or-divider::before,
+    .or-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+
+
+    .btn {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 10px;
+      padding: 0.75rem 1.4rem;
+      cursor: pointer;
+      transition: transform 0.15s, opacity 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn:hover  { transform: translateY(-1px); opacity: 0.92; }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    .btn-secondary {
+      background: var(--bg-step);
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-confirm {
+      align-self: flex-end;
+      background: var(--accent-2);
+      color: #fff;
+      box-shadow: 0 4px 14px color-mix(in srgb, var(--accent-2) 30%, transparent);
+    }
+
+    /* ─── Status text ────────────────────────────────────── */
+    .status-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      min-height: 1.2em;
+      font-style: italic;
+      transition: color 0.3s;
+    }
+
+    .status-text.success { color: var(--accent-2); font-style: normal; font-weight: 600; }
+    .status-text.error   { color: #d94040; font-style: normal; 
+    }
+
+
+
+
+    .status-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      min-height: 1.2em;
+      font-style: italic;
+      transition: color 0.3s;
+    }
+
+    .status-text.success { color: var(--accent-2); font-style: normal; font-weight: 600; 
+    }
+    .status-text.error   { color: #d94040; font-style: normal; 
+    }
+
+
+    .step-done-badge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-2);
+      background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+      border-radius: 999px;
+      padding: 0.2rem 0.65rem;
+      display: none;
+    }
+
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .activity-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.9rem 0.5rem;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg-step);
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.15s;
+      user-select: none;
+    }
+
+    .activity-option:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--text); 
+    }
+    .activity-option.selected { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); 
+    }
+
+    .activity-icon { font-size: 1.6rem; 
+    }
+
+
+    footer {
+      background: var(--text);
+      color: var(--bg);
+      padding: 1rem 2rem;
+    }
+
+    .bottom-navbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bottom-navbar a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--bg);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .bottom-navbar a:hover { opacity: 1; 
+    }
+    .bottom-navbar .email-button { opacity: 1; color: var(--accent) !important; 
+    }
+
+     @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .activity-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── Hero CTA button ── */
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 35%, transparent);
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+/* ── Main two-column layout ── */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem) 4rem;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .main-layout { grid-template-columns: 1fr; }
+  .sidebar { order: -1; }
+}
+
+/* ── TfL Widget ── */
+.tfl-widget {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.tfl-widget-header {
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tfl-widget-title {
+  font-family: 'Madimi One', sans-serif;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.tfl-live-badge {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent-2);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.tfl-live-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.tfl-lines-list {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.tfl-line-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.4rem;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+.tfl-line-row:hover { background: var(--bg-step); }
+
+.line-pill {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  min-width: 80px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.line-status-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-dot.good   { background: #22c55e; }
+.status-dot.minor  { background: #f59e0b; }
+.status-dot.severe { background: #ef4444; }
+
+.tfl-footer {
+  padding: 0.75rem 1.4rem;
+  border-top: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tfl-last-updated {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.tfl-refresh-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.tfl-refresh-btn:hover { background: color-mix(in srgb, var(--accent-2) 10%, transparent); }
+
+.tfl-loading {
+  padding: 2rem 1.4rem;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.tfl-error {
+  padding: 1rem 1.4rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  color: #d94040;
+}
+
+/* ── Sidebar & Resources ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.sidebar-card-header {
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1.5px solid var(--border);
+  font-family: 'Madimi One', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.resource-item {
+  display: block;
+  text-decoration: none;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.resource-item:last-child { border-bottom: none; }
+.resource-item:hover { background: var(--bg-step); }
+
+.resource-img-placeholder {
+  width: 100%;
+  height: 80px;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.resource-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.resource-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.resource-link-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
+.resource-img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+  display: block;
+  background: #f5f2eb;
+  padding: 0.5rem;
+}
+
+.activity-option:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  z-index: 999;
+}
+
+.skip-link:focus { 
+  top: 1rem; 
+}
+
+.grid-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.results-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem) 4rem;
+}
+
+.results-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.2rem 0 1.5rem;
+  border-bottom: 1.5px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.results-summary-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.results-summary-text strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.results-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.results-tag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+}
+
+.results-tag.tag-green {
+  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+  color: var(--accent-2);
+}
+
+.results-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.results-count {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.results-sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.results-sort label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.results-sort select {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.activity-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  border-color: var(--accent);
+}
+
+.activity-card:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.activity-card-img {
+  width: 100%;
+  height: 180px;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.activity-card-img::before {
+  content: '';
+  width: 28px;
+  height: 28px;
+  border: 2.5px solid var(--text-muted);
+  border-radius: 50%;
+  opacity: 0.35;
+  position: absolute;
+}
+
+.activity-card-img::after {
+  content: '';
+  width: 52px;
+  height: 40px;
+  border: 2.5px solid var(--text-muted);
+  border-radius: 6px;
+  opacity: 0.35;
+}
+
+.activity-card-img:has(img)::before,
+.activity-card-img:has(img)::after {
+  display: none;
+}
+
+.activity-card-body {
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.activity-type-badge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+  color: var(--accent-2);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  align-self: flex-start;
+}
+
+.activity-card-name {
+  font-family: 'Madimi One', sans-serif;
+  font-size: 1.15rem;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.activity-card-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.activity-card-url {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  color: var(--accent-2);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.activity-card-url:hover { text-decoration: underline; }
+
+.activity-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.activity-price {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+.activity-price.free { color: var(--accent-2); }
+
+.activity-distance {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.results-empty {
+  text-align: center;
+  padding: 4rem 1rem;
+  display: none;
+}
+
+.results-empty h2 {
+  font-family: 'Madimi One', sans-serif;
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.results-empty p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  max-width: 380px;
+  margin: 0 auto 1.5rem;
+}
+
+.btn-back {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.btn-back:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.skeleton-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 180px;
+  background: var(--border);
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-body {
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--border);
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-line.short  { width: 40%; }
+.skeleton-line.medium { width: 70%; }
+.skeleton-line.long   { width: 100%; }
+
+@keyframes shimmer {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@media (max-width: 600px) {
+  .results-grid { grid-template-columns: 1fr; }
+}
+    
