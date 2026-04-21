@@ -3,7 +3,7 @@ from flask import Flask, jsonify, request, render_template #Uses flask to run th
 import sqlite3 #Imports SQLite to connect to the database
 import os #Imports operating system, to build file paths that are compatible on different devices
 
-app = Flask(__name__) #Creates the flask app, ADD HERE
+app = Flask(__name__,) #Creates the flask app, ADD HERE
 
 
 @app.route('/') #Tells flask to fun the function, directing the URL
