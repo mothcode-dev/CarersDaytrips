@@ -60,8 +60,9 @@
     }
 
     .navbar-logo img { height: 44px; /* Fixed height, creating cohesion */
-       width: auto; /* Width adjusts automatically to maintain the image's original aspect ratio */
-        display: block; /* Removes the small gap that browsers add below inline images by default */
+      height: 60px;
+      width: auto; /* Width adjusts automatically to maintain the image's original aspect ratio */
+      display: block; /* Removes the small gap that browsers add below inline images by default */
       } 
 
     .nav-links {
