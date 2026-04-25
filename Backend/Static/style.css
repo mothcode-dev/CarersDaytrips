@@ -61,12 +61,15 @@
 
     .navbar-logo img { height: 44px; /* Fixed height, creating cohesion */
       height: 60px;
+      flex: 1;
       width: auto; /* Width adjusts automatically to maintain the image's original aspect ratio */
       display: block; /* Removes the small gap that browsers add below inline images by default */
       } 
 
     .nav-links {
       display: flex; /* Displays the list items in a row, to create a nav bar */
+      justify-content: center;
+      flex: 1;
       list-style: none; /* Removes the bullet points */
       gap: 0.25rem; /* Creates a small gap between each link */
     }
@@ -102,6 +105,7 @@
       cursor: pointer; /* Shows a hand cursor on hover to indicate the links are clickable */
       white-space: nowrap; /* Prevents the button text from wrapping onto two lines with smaller screens */
       transition: opacity 0.2s; /* Animates the opacity change on hover */
+      display: flex;
     }
 
     .theme-toggle-btn:hover { opacity: 0.8; /* Slightly fades the button on hover, giving visual feedback to the user */
@@ -429,7 +433,6 @@
       box-shadow: 0 4px 14px color-mix(in srgb, var(--accent-2) 30%, transparent);
     }
 
-    /* ─── Status text ────────────────────────────────────── */
     .status-text {
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -538,7 +541,6 @@
       .activity-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* ── Hero CTA button ── */
 .hero-cta {
   display: inline-flex;
   align-items: center;
@@ -559,7 +561,6 @@
   box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 50%, transparent);
 }
 
-/* ── Main two-column layout ── */
 .main-layout {
   display: grid;
   grid-template-columns: 1fr 300px;
@@ -575,7 +576,6 @@
   .sidebar { order: -1; }
 }
 
-/* ── TfL Widget ── */
 .tfl-widget {
   background: var(--bg-card);
   border: 1.5px solid var(--border);
