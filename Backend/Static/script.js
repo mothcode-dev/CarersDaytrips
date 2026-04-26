@@ -535,3 +535,10 @@ async function init() { //The main function that runs when the Results page load
 }
 init(); //Calls init() immediately when the script loads, starting the whole process
 
+const hamburger = document.getElementById("hamburger"); //Finds the button using the ID
+const navLinks = document.querySelector(".nav-links"); //Finds ul containing my navigation links
+
+hamburger.addEventListener("click", () => { //Lists for a click on the hamburger bar
+  navLinks.classList.toggle("active"); //Adds or removes the active class (either shows or hides the menu depending on its current status)
+});
+

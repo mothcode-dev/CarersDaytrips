@@ -1240,3 +1240,40 @@ body.dark-mode .what-we-do-card {
 .what-we-do-card {
   padding: 1rem;
 }
+
+.hamburger {
+  display: none; /* Hides the button by default so it's not visible on desktop */
+  font-size: 1.8rem; /* Increases the icon size */
+  background: none; 
+  border: none;
+  cursor: pointer; /* Changes the cursor to a hand when hovering */
+}
+
+
+@media (max-width: 768px) { /* Applies to phones and tablets (any device with a smaller screen) */
+.hamburger {
+  display: block; /* Overrides hidden rule, displaying on mobile */
+  }
+
+.nav-links {
+  position: absolute; /* Allows for the nav bar to be anywhere on screen */
+  top: 70px; /* Places it below the navbar height */
+  left: 0; 
+  width: 100%; 
+  flex-direction: column; /* Vertically stacking links (to be a dropdown list on mobile) */
+  background: var(--bg-card); /* Adjusts to colour scheme */
+  display: none; /* Hides the menu by default */
+  padding: 1rem, 0; /* Adds padding to the dropdown so the menu doesn't feel cluttered */
+  border-bottom: 1px solid var(--border); /* Adds a line at the bottom to distinguish it from the rest of the page */
+  }
+
+.nav-links.active { /* The menu becomes visible */
+  display: flex; /* Aligns items */
+}
+
+.nav-links li {
+  text-align: center; /* Centers the text */
+  padding: 0.5rem 0; /* Adds padding for space, to improve usability on mobile so there's more space to click */
+}
+
+}
