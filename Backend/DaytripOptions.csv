@@ -1,21 +1,21 @@
 Image,Activity Name,Location ,Postcode,Price,price_numeric,Category,Date,Duration of Visit,duration_mins,Opening Hours,URL
-kew-gardens.jpg,Royal Botanic Gardens,Kew Gardens ,TW9 3AB,From £24-30,24,Nature & Parks,N/A,3-4hrs,210,10am-6pm,https://www.kew.org/
+kew-gardens.jpg,Royal Botanic Gardens,Kew Gardens ,TW9 3AB,From œ24-30,24,Nature & Parks,N/A,3-4hrs,210,10am-6pm,https://www.kew.org/
 richmond-park.jpg,Richmond Park,Richmond Park,KT2 5JN,Free,0,Nature & Parks,N/A,All day,1440,24 hours,https://www.royalparks.org.uk/visit/parks/richmond-park
-hampton-court.jpg,Hampton Court Palace,Hampton Court,KT8 9AU,From £1-£32,1,Nature & Parks,N/A,3-5hrs,240,10am-4pm,https://www.hrp.org.uk/hampton-court-palace/
-kensington-gardens.jpg,Kensington Gardens,West London,W2 3LH,Free,0,Nature & Parks,N/A,2-3hrs,150,6?am–9:45?pm,https://www.royalparks.org.uk/visit/parks/kensington-gardens
+hampton-court.jpg,Hampton Court Palace,Hampton Court,KT8 9AU,From œ1-œ32,1,Nature & Parks,N/A,3-5hrs,240,10am-4pm,https://www.hrp.org.uk/hampton-court-palace/
+kensington-gardens.jpg,Kensington Gardens,West London,W2 3LH,Free,0,Nature & Parks,N/A,2-3hrs,150,6am?9:45?pm,https://www.royalparks.org.uk/visit/parks/kensington-gardens
 regents-park.jpg,The Regent's Park,North-West Central London,NW1 4NR,Free,0,Nature & Parks,N/A,1-3hrs,120,5am-9:30pm,https://www.friendsofregentspark.org/
-rose-theatre.jpg,Rose Theatre,Kingston,KT1 1HL,Prices vary,10,Theatre,N/A,2-3hrs,150,"Varies, typically 10am–6pm",https://www.rosetheatre.org/
+rose-theatre.jpg,Rose Theatre,Kingston,KT1 1HL,Prices vary,10,Theatre,N/A,2-3hrs,150,"Varies, typically 10am-6pm",https://www.rosetheatre.org/
 richmond-theatre.jpg,Richmond Theatre,Richmond,TW9 1QJ,Prices vary,10,Theatre,N/A,1-3hrs,120,Box Offices are open 90 minutes prior to a performance,https://www.atgtickets.com/venues/richmond-theatre/whats-on/
 national-theatre.jpg,National Theatre,South Bank,SE1 9PX,Prices vary,10,Theatre,N/A,2-4hrs,180,"10am-11pm, Monday to Saturday",https://www.nationaltheatre.org.uk/home/
 aldwych-theatre.jpg,Aldwych Theatre,Aldwych,WC2B 4DF,Prices vary,10,Theatre,N/A,2-4hrs,180,"4-9:45pm Monday to Wednesday, 4pm-10:15pm Fridays, 12-10:15pm Thursday and Saturday",https://nederlander.co.uk/aldwych/
 the-old-vic.jpg,The Old Vic,Waterloo,SE1 8NB,Prices vary,10,Theatre,N/A,2-3hrs,150,"10am until performance ends, Monday to Saturday",https://www.oldvictheatre.com/
 natural-history-museum.jpg,Natural History Museum,South Kensington,SW7 5BD,Free (Exhibitions Cost),0,Museum,N/A,3-4hrs,198,10am-5:50pm,https://www.nhm.ac.uk/
 v-and-a.jpg,V&A Museum,South Kensington,SW7 2RL,Free (Exhibitions Cost),0,Museum,N/A,2-3hrs,150,"10am-5:45pm most days, except on Friday where 10am-10pm",https://www.vam.ac.uk/
-british-museum.jpg,The British Museum,Great Russell Street,WC1B 3DG,Free (Booking Required + Exhibitions Cost),0,Museum,N/A,3-6hrs,270,"10?am–5?pm most days, except on Fridays where 10am-8:30pm",https://www.britishmuseum.org/
+british-museum.jpg,The British Museum,Great Russell Street,WC1B 3DG,Free (Booking Required + Exhibitions Cost),0,Museum,N/A,3-6hrs,270,"10am?5?pm most days, except on Fridays where 10am-8:30pm",https://www.britishmuseum.org/
 london-transport-museum.jpg,London Transport Museum,Covent Garden,WC2E 7BB,"Annual pass required, price varies ",1,Museum,N/A,2-3hrs,150,10:00 - 18:00,https://www.ltmuseum.co.uk/
-national-gallery.jpg,The National Gallery,Trafalgar Square,WC2N 5DN,Free,0,Museum,N/A,2-3hrs,150,Open daily 10am–6pm Friday until 9pm,https://www.nationalgallery.org.uk/
-kingston-carers-network.jpg,Support Group for Carers of Adults who are Neurodivergent,"Kingston Carers Network, Tolworth",KT6 7HF,Free (Booking Required),0,Support Groups,2026-03-30,2hrs,120,9am-5pm Mon-Fri,https://www.kingstoncarers.org.uk/calendar/item/52508958
-kingston-carers-network.jpg,Support Group for Carers of People with a Mental Health Condition,"Kingston Carers Network, Tolworth",KT6 7HF,Free,0,Support Groups,2026-04-14,1hr 15mins,75,9am-5pm Mon-Fri,https://www.kingstoncarers.org.uk/calendar/item/45438241
-kingston-carers-network.jpg,Support Group for Carers of Adults who are Neurodivergent,"Kingston Carers Network, Tolworth",KT6 7HF,Free (Booking Required),0,Support Groups,2026-04-27,2hrs,120,9am-5pm Mon-Fri,https://www.kingstoncarers.org.uk/calendar/item/52508959
-kingston-carers-network.jpg,Support Group for Carers of People with a Mental Health Condition,"Kingston Carers Network, Tolworth",KT6 7HF,Free,0,Support Groups,2026-05-12,1hr 15mins,75,9am-5pm Mon-Fri,https://www.kingstoncarers.org.uk/calendar/item/45438242
-kingston-carers-network.jpg,Support Group for Carers of Adults who are Neurodivergent,"Kingston Carers Network, Tolworth",KT6 7HF,Free (Booking Required),0,Support Groups,2026-05-25,2hrs,120,9am-5pm Mon-Fri,https://www.kingstoncarers.org.uk/calendar/item/52508960
+national-gallery.jpg,The National Gallery,Trafalgar Square,WC2N 5DN,Free,0,Museum,N/A,2-3hrs,150,Open daily 10am?6pm Friday until 9pm,https://www.nationalgallery.org.uk/
+kingston-carers-network.jpg,Support Group for Carers of People with a Mental Health Condition,"Fircroft Trust, 96 Ditton Road",KT6 6RH,Free,0,Support Groups,2026-05-12,1hr 15mins,75,9am-5pm Mon-Fri,https://www.kingstoncarers.org.uk/calendar/item/45438242
+kingston-carers-network.jpg,Support Group for Carers of Adults who are Neurodivergent,"Guildhall Building, Kingston Upon Thames",KT1 1EU,Free (Booking Required),0,Support Groups,2026-05-25,2hrs,120,9am-5pm Mon-Fri,https://www.kingstoncarers.org.uk/calendar/item/52508960
+kingston-carers-network.jpg,Support Group for Carers of People with a Mental Health Condition,"Fircroft Trust, 96 Ditton Road",KT6 6RH,Free,0,Support Groups,2026-06-09,1hr 15mins,75,9am-5pm Mon-Fri,https://www.kingstoncarers.org.uk/calendar/item/45438243
+kingston-carers-network.jpg,Support Group for Carers of Adults who are Neurodivergent,"Guildhall Building, Kingston Upon Thames",KT1 1EU,Free (Booking Required),0,Support Groups,2026-06-29,2hrs,120,9am-5pm Mon-Fri,https://www.kingstoncarers.org.uk/calendar/item/52508961
+kingston-carers-network.jpg,Support Group for Carers of People with a Mental Health Condition,"Fircroft Trust, 96 Ditton Road",KT6 6RH,Free,0,Support Groups,2026-07-14,1hr 15mins,75,9am-5pm Mon-Fri,https://www.kingstoncarers.org.uk/calendar/item/45438244

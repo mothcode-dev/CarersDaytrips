@@ -170,17 +170,13 @@
          color: var(--text-muted); 
         }
 
-      .step-card.locked .step-chevron {
-         opacity: 0; pointer-events: none; 
-        } /* Hides the chevron arrow entirely on desktop since accordion toggling is disabled, '—pointer-events:none' also makes it unclickable */
-
       .step-card.locked .step-header {
          cursor: default; } /* Changes cursor from 'not-allowed' to the normal arrow since clicking does nothing on desktop */
 
       .step-body {
         grid-template-rows: 1fr !important; 
       } /* Forces all step bodies to always be fully open on desktop */
-      .step-chevron {display: none;} /* Hides the chevron arrow entirely on desktop */
+
 
       #step3 {
         grid-column: 1 / -1;
@@ -202,98 +198,116 @@
       font-size: 1rem;
       padding: 0.9rem 2.2rem; /* Ensures the button is tall and wide so it's accessible on both desktop and mobile */
       border-radius: 12px;
-      box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 40%, transparent);
+      box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 40%, transparent); /* Adds styling to the button - primarily shadow styling */
       transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
       position: relative;
       overflow: hidden;
     }
 
-    .btn-find::after {
+    .btn-find::after { /* Creates another layer within the button */
       content: '';
       position: absolute;
       inset: 0;
       background: rgba(255,255,255,0.15);
-      opacity: 0;
+      opacity: 0; /* Is hidden initially */
       transition: opacity 0.2s;
     }
 
-    .btn-find:hover:not(:disabled)::after { opacity: 1; }
-    .btn-find:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 50%, transparent);
+    .btn-find:hover:not(:disabled)::after { /* Button becomes visible on hover if not disabled */
+      opacity: 1; 
     }
 
-    .btn-find:disabled {
-      opacity: 0.38;
-      cursor: not-allowed;
+    .btn-find:hover:not(:disabled) { /* Further hovering effects if the button isn't disabled */
+      transform: translateY(-2px); /* Lifts the button up slightly*/
+      box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 50%, transparent); 
+    }
+
+    .btn-find:disabled { /* When the button is disabled */
+      opacity: 0.38; /* Visibly looks faded */
+      cursor: not-allowed; /* Shows the no-entry sign on hover */
       transform: none;
       box-shadow: none;
     }
 
-    @media (max-width: 600px) {
-      .find-activities-bar { justify-content: stretch; }
-      .btn-find { width: 100%; justify-content: center; }
+    @media (max-width: 600px) { /* Applies to phones */
+      .find-activities-bar { /* Items stretch the full width to fill the space */
+        justify-content: stretch; 
+      }
+
+      .btn-find { /* Button fills the width and becomes centred */
+        width: 100%; 
+        justify-content: center; 
+      }
     }
 
-
-
-    .step-card {
+    .step-card { /* Applies to each step card */
       background: var(--bg-card);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
+      border: 1.5px solid var(--border); /* Creates a light border */
+      border-radius: var(--radius); /* Creates rounded corners to be cohesive */
       overflow: hidden;
       box-shadow: var(--shadow);
       transition: border-color var(--transition), background var(--transition);
     }
 
-    .step-card.locked {
-      background: var(--locked);
-      box-shadow: none;
+    .step-card.locked { /* If a step is locked */
+      background: var(--locked); /* Applies a faded colour for visual indication */
+      box-shadow: none; /* Removes the depth */
     }
 
-    .step-card.completed .step-header {
-      border-left: 4px solid var(--accent-2);
+    .step-card.completed .step-header { /* Once a step is completed */
+      border-left: 4px solid var(--accent-2); /* Adds a bar to indicate completion */
     }
-
-
 
      .step-header {
-      display: flex;
+      display: flex; /* Items are displayed vertically */
       align-items: center;
       gap: 1rem;
       padding: 1.1rem 1.4rem;
-      cursor: pointer;
-      background: transparent;
+      cursor: pointer; /* Shows the hand cursor on hover */
+      background: transparent; /* Removes the button styling */
       border: none;
       width: 100%;
       text-align: left;
       transition: background 0.2s;
     }
 
-    .step-card:not(.locked) .step-header:hover { background: color-mix(in srgb, var(--accent) 5%, transparent); }
-    .step-card.locked .step-header { cursor: not-allowed; }
+    .step-card:not(.locked) .step-header:hover /* If it's not locked */
+    { 
+      background: color-mix(in srgb, var(--accent) 5%, transparent); /* Hovering adds an accent tint */
+    }
 
-    .step-number {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
+    .step-card.locked .step-header { /* If locked */
+      cursor: not-allowed; /* It shows the no entry cursor */
+    }
+
+    .step-number { /* Styles the numbers in the circles for the steps */
+      width: 36px; /* Creates the circle */
+      height: 36px; /* Creates the circle */
+      border-radius: 50%; /* Creates the circle */
       background: var(--accent);
       color: #fff;
       font-family: 'Madimi One', sans-serif;
       font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      display: flex; /* Centres the number */
+      align-items: center; /* Centres the number */
+      justify-content: center; /* Centres the number */
+      flex-shrink: 0; /* Prevents shrinkage in flex layouts */
       transition: background var(--transition);
     }
 
-    .step-card.locked .step-number    { background: var(--locked-txt); }
-    .step-card.completed .step-number { background: var(--accent-2); }
+    .step-card.locked .step-number { 
+      background: var(--locked-txt); /* Sets the text to a faded colour if locked */
+    }
 
-    .step-title-group { flex: 1; }
+    .step-card.completed .step-number { 
+      background: var(--accent-2); /* Shows a brighter colour on completion */
+    }
 
-    .step-title {
+    .step-title-group { /* Takes up space in the flex layout so the text expands */
+       flex: 1; 
+      }
+
+    .step-title { /* Styles the step titles */
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 1rem;
@@ -301,41 +315,36 @@
       transition: color var(--transition);
     }
 
-    .step-card.locked .step-title { color: var(--locked-txt); }
+    .step-card.locked .step-title { /* If the step is locked, shows a muted colour */
+      color: var(--locked-txt); 
+    }
 
-    .step-subtitle {
+    .step-subtitle { /* Styles the descriptive, smaller text under the titles */
       font-size: 0.78rem;
       color: var(--text-muted);
       margin-top: 0.1rem;
     }
 
-    .step-card.locked .step-subtitle { color: var(--locked-txt); }
-
-    .step-chevron {
-      width: 20px;
-      height: 20px;
-      color: var(--text-muted);
-      transition: transform var(--transition), opacity 0.2s;
-      flex-shrink: 0;
-    }
-
-    .step-card.locked .step-chevron { opacity: 0.3; }
-    .step-card.open .step-chevron   { transform: rotate(180deg); 
+    .step-card.locked .step-subtitle { /* The subtitles are dimmed when the step is locked */
+      color: var(--locked-txt); 
     }
 
 
-
-    .step-body {
+    .step-body { /* Styles the step collapsible parts */
       display: grid;
-      grid-template-rows: 0fr;
+      grid-template-rows: 0fr; /* Used so the containers can collapse */
       transition: grid-template-rows var(--transition);
     }
 
-    .step-card.open .step-body { grid-template-rows: 1fr; }
+    .step-card.open .step-body { 
+      grid-template-rows: 1fr; /* Content expands to full height when opened */
+    }
 
-    .step-body-inner { overflow: hidden; }
+    .step-body-inner { 
+      overflow: hidden; /* Prevents any content spilling */
+    }
 
-    .step-content {
+    .step-content { /* Styles and applies padding to the content within the steps */
       padding: 0 1.4rem 1.4rem;
       display: flex;
       flex-direction: column;
@@ -343,7 +352,7 @@
     }
 
 
-     label {
+     label { /* Globally styles labels */
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       font-size: 0.82rem;
@@ -356,29 +365,31 @@
 
     input[type="text"],
     input[type="date"],
-    select {
+    select { /* Specifically targets text inputs, date inputs and dropdown menus, providing styling */
       width: 100%;
       padding: 0.75rem 1rem;
       border: 1.5px solid var(--border);
       border-radius: 10px;
       background: var(--bg-step);
       color: var(--text);
-      font-family: 'Parkinsans', sans-serif;
+      font-family: 'Parkinsans', sans-serif; /* Uses a different font from the labels, in order to distinguish the text */
       font-size: 0.95rem;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    input[type="text"]:focus,
+    input[type="text"]:focus, 
     input[type="date"]:focus,
-    select:focus {
+    select:focus { /* Applies when users click or tab inputs */
       border-color: var(--accent);
       box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
     }
 
-    select option { background: var(--bg-card); }
+    select option { /* Used for dropdown options using select */
+      background: var(--bg-card); 
+    }
 
-    .or-divider {
+    .or-divider { /* Used to style the Trip Planner's OR section when selecting location */
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -388,7 +399,7 @@
       font-weight: 600;
     }
 
-    .or-divider::before,
+    .or-divider::before, /* Creates elements before and after the divider, in order to fill space and create the lines accompanying it */
     .or-divider::after {
       content: '';
       flex: 1;
@@ -397,8 +408,7 @@
     }
 
 
-
-    .btn {
+    .btn { /* Styles the buttons */
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 0.9rem;
@@ -411,29 +421,29 @@
       align-items: center;
       gap: 0.5rem;
     }
-    .btn:hover  { transform: translateY(-1px); opacity: 0.92; }
-    .btn:active { transform: translateY(0); }
 
-    .btn-primary {
+    .btn:hover  { /* Moves the button up and gives a fading illusion, on hover */
+      transform: translateY(-1px); opacity: 0.92; 
+    }
+
+    .btn:active { /* Resets the button's position when clicked */
+      transform: translateY(0); 
+    }
+
+    .btn-primary { /* Styles the trip planner location button, using a bright orange background with white text to make it stand out */
       background: var(--accent);
       color: #fff;
       box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent);
     }
 
-    .btn-secondary {
-      background: var(--bg-step);
-      color: var(--text);
-      border: 1.5px solid var(--border);
-    }
-
-    .btn-confirm {
+    .btn-confirm { /* Styles the date confirmation button */
       align-self: flex-end;
-      background: var(--accent-2);
+      background: var(--accent-2); /* Changes colour when clicked */
       color: #fff;
       box-shadow: 0 4px 14px color-mix(in srgb, var(--accent-2) 30%, transparent);
     }
 
-    .status-text {
+    .status-text { /* Styles the status text, used for screen reader text, to communicate messages to the user, such as no results found */
       font-size: 0.85rem;
       color: var(--text-muted);
       min-height: 1.2em;
@@ -441,28 +451,18 @@
       transition: color 0.3s;
     }
 
-    .status-text.success { color: var(--accent-2); font-style: normal; font-weight: 600; }
-    .status-text.error   { color: #d94040; font-style: normal; 
+    .status-text.success { /* Turns green to indicate success, and makes the text stronger */
+      color: var(--accent-2);
+       font-style: normal; 
+       font-weight: 600; 
     }
 
-
-
-
-    .status-text {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      min-height: 1.2em;
-      font-style: italic;
-      transition: color 0.3s;
+    .status-text.error { /* Turns the text red and makes the text normal */
+      color: #d94040; 
+      font-style: normal; 
     }
 
-    .status-text.success { color: var(--accent-2); font-style: normal; font-weight: 600; 
-    }
-    .status-text.error   { color: #d94040; font-style: normal; 
-    }
-
-
-    .step-done-badge {
+    .step-done-badge { /* Styles the steps done on the Trip Planner page */
       font-family: 'Montserrat', sans-serif;
       font-size: 0.75rem;
       font-weight: 700;
@@ -470,19 +470,18 @@
       background: color-mix(in srgb, var(--accent-2) 12%, transparent);
       border-radius: 999px;
       padding: 0.2rem 0.65rem;
-      display: none;
+      display: none; /* Is hidden, but is then revealed when steps are completed */
     }
 
-
-    .activity-grid {
+    .activity-grid { /* Styles the grid layout for the activities */
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* Creates a responsive grid that uses the space as much as possible */
       gap: 0.65rem;
     }
 
-    .activity-option {
+    .activity-option { /* Styles each activity within the grid when selecting */
       display: flex;
-      flex-direction: column;
+      flex-direction: column; /* Stacks the activities */
       align-items: center;
       gap: 0.4rem;
       padding: 0.9rem 0.5rem;
@@ -493,17 +492,25 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.8rem;
       font-weight: 600;
-      color: var(--text-muted);
+      color: var(--text-muted); /* Muted colour until selected */
       transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.15s;
-      user-select: none;
+      user-select: none; /* Ensures text isn't highlighted when clicked repeatedly */
     }
 
-    .activity-option:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--text); 
-    }
-    .activity-option.selected { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); 
+    .activity-option:hover { 
+      transform: translateY(-2px); 
+      border-color: var(--accent); 
+      color: var(--text); 
     }
 
-    .activity-icon { font-size: 1.6rem; 
+    .activity-option.selected { 
+      border-color: var(--accent); 
+      background: color-mix(in srgb, var(--accent) 10%, transparent); 
+      color: var(--accent); 
+    }
+
+    .activity-icon { 
+      font-size: 1.6rem; 
     }
 
 
@@ -541,25 +548,25 @@
       .activity-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--accent);
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.85rem 1.8rem;
-  border-radius: 999px;
-  text-decoration: none;
-  box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 35%, transparent);
-  transition: transform 0.15s, box-shadow 0.2s;
-}
-.hero-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 50%, transparent);
-}
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 35%, transparent);
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 50%, transparent);
+  }
 
 .main-layout {
   display: grid;
@@ -643,7 +650,10 @@
   border-radius: 10px;
   transition: background 0.15s;
 }
-.tfl-line-row:hover { background: var(--bg-step); }
+
+.tfl-line-row:hover { 
+  background: var(--bg-step); 
+}
 
 .line-pill {
   font-family: 'Montserrat', sans-serif;

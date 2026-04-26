@@ -30,7 +30,7 @@ def contact():
 @app.route('/api/activities') #The API that the Results page calls to get activities from from the database
 def get_activities():
     category = request.args.get('category', '') #Reads the 'category' parameter from the URL, defaulting to '' if not provided
-    date     = request.args.get('date', '') #Reads the 'date' parameter from the URL, defaulting to '' if not provided
+    date = request.args.get('date', '') #Reads the 'date' parameter from the URL, defaulting to '' if not provided
 
     conn = sqlite3.connect(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'activities.db')) #Connects to the database file in the Backend folder, 'os.path.join' builds the full path regardless of operating system
     conn.row_factory = sqlite3.Row #Makes each row behave like a dictionary so columns can be accessed by name
