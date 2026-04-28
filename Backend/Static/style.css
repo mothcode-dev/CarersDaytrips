@@ -497,32 +497,27 @@
       user-select: none; /* Ensures text isn't highlighted when clicked repeatedly */
     }
 
-    .activity-option:hover { 
+    .activity-option:hover { /* Gives user feedback on hover - elevates the tile slightly, changing the colour, to indicate to the user that they're selecting */
       transform: translateY(-2px); 
       border-color: var(--accent); 
       color: var(--text); 
     }
 
-    .activity-option.selected { 
+    .activity-option.selected { /* Gives further user feedback - indicating which option they've selected. This makes the colour for the option more solid, for instance */
       border-color: var(--accent); 
       background: color-mix(in srgb, var(--accent) 10%, transparent); 
       color: var(--accent); 
     }
 
-    .activity-icon { 
-      font-size: 1.6rem; 
-    }
-
-
-    footer {
+    footer { /* Inverts the colours for contrast (i.e. if the page is in light mode, the footer has dark mode colours, and vice versa */
       background: var(--text);
       color: var(--bg);
       padding: 1rem 2rem;
     }
 
-    .bottom-navbar {
+    .bottom-navbar { 
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: wrap; /* Wraps onto multiple lines on more narrow screens  */
       gap: 0.5rem 1rem;
       align-items: center;
       justify-content: center;
@@ -532,23 +527,31 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
-      color: var(--bg);
+      color: var(--bg); /* Uses the same colour as the footer */
       text-decoration: none;
       opacity: 0.7;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s; /* Creates a fade on hover */
     }
 
-    .bottom-navbar a:hover { opacity: 1; 
-    }
-    .bottom-navbar .email-button { opacity: 1; color: var(--accent) !important; 
-    }
-
-     @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .activity-grid { grid-template-columns: repeat(2, 1fr); }
+    .bottom-navbar a:hover { /* Hovered link is no longer a muted colour */
+      opacity: 1; 
     }
 
-  .hero-cta {
+    .bottom-navbar .email-button {
+      opacity: 1; color: var(--accent) !important; /* Uses full opacity, always using the accent colour */
+    }
+
+     @media (max-width: 600px) { 
+      .nav-links { 
+        display: none; /* Hides the nav bar, in order to replace it with a hamburger bar/menu */
+      }
+
+      .activity-grid { 
+        grid-template-columns: repeat(2, 1fr); /* Grid is collapsed to 2 columns */
+      }
+    }
+
+  .hero-cta { /* Styles the 'Plan My Trip' button */
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -558,45 +561,49 @@
     font-weight: 700;
     font-size: 0.95rem;
     padding: 0.85rem 1.8rem;
-    border-radius: 999px;
+    border-radius: 999px; /* Ensures the button keeps its rounded edges regardless of page size */
     text-decoration: none;
     box-shadow: 0 4px 20px color-mix(in srgb, var(--accent) 35%, transparent);
     transition: transform 0.15s, box-shadow 0.2s;
   }
-  .hero-cta:hover {
+
+  .hero-cta:hover { /* Lifts the button and intensifies the shadow */
     transform: translateY(-2px);
     box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 50%, transparent);
   }
 
-.main-layout {
+.main-layout { /* Styles the TfL widget */
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr 300px; /* Ensures the main content takes the majority of the space */
   gap: 1.5rem;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2rem) 4rem;
-  align-items: start;
+  padding: 0 clamp(1rem, 4vw, 2rem) 4rem; /* Padding scales according to viewport width */
+  align-items: start; /* Aligns items to the top of their section */
 }
 
 @media (max-width: 800px) {
-  .main-layout { grid-template-columns: 1fr; }
-  .sidebar { order: -1; }
+  .main-layout { grid-template-columns: 1fr; /* Stacks to a single column on devices (such as tablets and phones) with smaller screens */
+  }
+  
+  .sidebar { order: -1; /* Sidebar appears above the content on mobile */
+  }
 }
 
 .tfl-widget {
-  background: var(--bg-card);
+  background: var(--bg-card); /* Differentiates the background from the main page slightly */
   border: 1.5px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius); /* Creates the rounded edges */
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
 .tfl-widget-header {
   padding: 1.1rem 1.4rem;
-  border-bottom: 1.5px solid var(--border);
+  border-bottom: 1.5px solid var(--border); /* Separates the header and the content below */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Separates the title and status badge - the title goes on the left and the live status on the right */
   gap: 1rem;
 }
 
@@ -616,33 +623,38 @@
   padding: 0.2rem 0.6rem;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.3rem; /* Creates the space between the dot and the 'LIVE' text */
 }
 
-.tfl-live-badge::before {
-  content: '';
+.tfl-live-badge::before { /* Creates the white the dot next to the 'LIVE' text */
+  content: ''; /* Renders empty space for the dot to exist, as it is not text */
   width: 6px;
   height: 6px;
   background: #fff;
-  border-radius: 50%;
-  animation: pulse 1.5s infinite;
+  border-radius: 50%; 
+  animation: pulse 1.5s infinite; /* Runs a pulse animation indefinitely, looping every 1.5 seconds */
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.3; }
+  0%, 100% { 
+    opacity: 1; /* Is fully visible at the beginning and end */
+  }
+
+  50% { 
+    opacity: 0.3; /* Decreases the opacity halfway through, to stimulate a blinking effect */
+  }
 }
 
 .tfl-lines-list {
   padding: 0.75rem 1rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stacks each line row vertically */
   gap: 0.4rem;
-  max-height: 420px;
-  overflow-y: auto;
+  max-height: 420px; /* Caps the height so the widget doesn't get too tall */
+  overflow-y: auto; /* A scrollbar is introduced when the height exceeds 420px */
 }
 
-.tfl-line-row {
+.tfl-line-row { /* Creates the coloured tube name backgrounds, as well as the status and dot colour */
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -652,7 +664,7 @@
 }
 
 .tfl-line-row:hover { 
-  background: var(--bg-step); 
+  background: var(--bg-step); /* A slightly different colour to the background, to distinguish it */
 }
 
 .line-pill {
@@ -663,7 +675,7 @@
   border-radius: 999px;
   min-width: 80px;
   text-align: center;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Keeps the pill the same size regardless of screen */
 }
 
 .line-status-text {
@@ -671,7 +683,7 @@
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text);
-  flex: 1;
+  flex: 1; /* Fills the space between the pill and the status dot */
 }
 
 .status-dot {
@@ -680,22 +692,31 @@
   border-radius: 50%;
   flex-shrink: 0;
 }
-.status-dot.good   { background: #22c55e; }
-.status-dot.minor  { background: #f59e0b; }
-.status-dot.severe { background: #ef4444; }
 
-.tfl-footer {
-  padding: 0.75rem 1.4rem;
-  border-top: 1.5px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.status-dot.good   { /* Sets the colours for each service state, using traffic light colours, i.e. green for good */
+  background: #22c55e; 
 }
 
-.tfl-last-updated {
+.status-dot.minor  { 
+  background: #f59e0b; 
+}
+
+.status-dot.severe { 
+  background: #ef4444; 
+}
+
+.tfl-footer { 
+  padding: 0.75rem 1.4rem;
+  border-top: 1.5px solid var(--border); /* Separates the content from the footer with a line */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Spaces the timestamp to the left and the refresh button to the right */
+}
+
+.tfl-last-updated { /* Shows the time when the data was last updated */
   font-family: 'Montserrat', sans-serif;
   font-size: 0.72rem;
-  color: var(--text-muted);
+  color: var(--text-muted); /* Still visible, but muted, as it is interesting to the user but less important than other text */
 }
 
 .tfl-refresh-btn {
@@ -703,16 +724,19 @@
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--accent-2);
-  background: none;
-  border: none;
-  cursor: pointer;
+  background: none; /* Removes the button default background */
+  border: none; 
+  cursor: pointer; /* Brings back the hand cursor to signal user input */
   padding: 0.2rem 0.5rem;
   border-radius: 6px;
   transition: background 0.15s;
 }
-.tfl-refresh-btn:hover { background: color-mix(in srgb, var(--accent-2) 10%, transparent); }
 
-.tfl-loading {
+.tfl-refresh-btn:hover { /* Provides a subtle green background colour, to indicate to the user that their hover is effective */
+  background: color-mix(in srgb, var(--accent-2) 10%, transparent); 
+}
+
+.tfl-loading { /* Shows while loading the TfL information */
   padding: 2rem 1.4rem;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
@@ -720,14 +744,14 @@
   color: var(--text-muted);
 }
 
-.tfl-error {
+.tfl-error { /* Shows if the API fails to load */
   padding: 1rem 1.4rem;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.82rem;
   color: #d94040;
 }
 
-/* ── Sidebar & Resources ── */
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -757,8 +781,13 @@
   border-bottom: 1px solid var(--border);
   transition: background 0.15s;
 }
-.resource-item:last-child { border-bottom: none; }
-.resource-item:hover { background: var(--bg-step); }
+.resource-item:last-child {
+   border-bottom: none; 
+  }
+
+.resource-item:hover {
+   background: var(--bg-step); 
+  }
 
 .resource-img-placeholder {
   width: 100%;
@@ -1134,9 +1163,17 @@
   animation: shimmer 1.5s infinite;
 }
 
-.skeleton-line.short  { width: 40%; }
-.skeleton-line.medium { width: 70%; }
-.skeleton-line.long   { width: 100%; }
+.skeleton-line.short {
+   width: 40%; 
+  }
+
+.skeleton-line.medium { 
+   width: 70%; 
+  }
+
+.skeleton-line.long {
+  width: 100%; 
+  }
 
 @keyframes shimmer {
   0%, 100% { opacity: 1; }
