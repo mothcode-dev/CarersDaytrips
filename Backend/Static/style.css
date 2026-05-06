@@ -754,53 +754,43 @@
 
 .sidebar {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stacks the content on one another */
   gap: 1rem;
 }
 
 .sidebar-card {
   background: var(--bg-card);
   border: 1.5px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius); /* Gives the cards their rounded edges */
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
 .sidebar-card-header {
   padding: 0.9rem 1.2rem;
-  border-bottom: 1.5px solid var(--border);
+  border-bottom: 1.5px solid var(--border); /* Creates the line that separates the header from the rest of the card */
   font-family: 'Madimi One', sans-serif;
   font-size: 1rem;
   color: var(--text);
 }
 
 .resource-item {
-  display: block;
+  display: block; /* Ensures <a> fills the entire width of the container */
   text-decoration: none;
   padding: 1rem 1.2rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border); /* Adds a line between each resource */
   transition: background 0.15s;
 }
+
 .resource-item:last-child {
-   border-bottom: none; 
+   border-bottom: none; /* Ensures there isn't a line after the last resource, so there isn't double lines */
   }
 
 .resource-item:hover {
-   background: var(--bg-step); 
+   background: var(--bg-step); /* Changes the tint of the background slightly, to indicate to the user the whole block is clickable */
   }
 
-.resource-img-placeholder {
-  width: 100%;
-  height: 80px;
-  border-radius: 8px;
-  margin-bottom: 0.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-}
-
-.resource-name {
+.resource-name { /* Styles the titles for each resource */
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
@@ -811,12 +801,12 @@
 .resource-desc {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--text-muted); /* Gives the text a muted hue, to visually signal to the user the information is less important than other elements */
   line-height: 1.5;
   margin-bottom: 0.4rem;
 }
 
-.resource-link-label {
+.resource-link-label { /* Styles the visit label */
   font-family: 'Montserrat', sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
@@ -826,7 +816,7 @@
 .resource-img {
   width: 100%;
   height: 120px;
-  object-fit: contain;
+  object-fit: contain; /* Scales the image to fit within the box without distorting the image */
   border-radius: 8px;
   margin-bottom: 0.6rem;
   display: block;
@@ -835,13 +825,13 @@
 }
 
 .activity-option:focus {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--accent); /* Creates a bright orange outline around each activity card, when users use keyboard navigation */
   outline-offset: 2px;
 }
 
-.skip-link {
+.skip-link { /* Styles the 'Skip To Main Content' button */
   position: absolute;
-  top: -100%;
+  top: -100%; /* Pushes it up off screen, where it remains invisible until keyboard navigation is used */
   left: 1rem;
   background: var(--accent);
   color: #fff;
@@ -850,11 +840,11 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-decoration: none;
-  z-index: 999;
+  z-index: 999; /* Sits above other content */
 }
 
 .skip-link:focus { 
-  top: 1rem; 
+  top: 1rem; /* When it's navigated to, it brings the user to the top of the page to the button */
 }
 
 .grid-label {
@@ -869,10 +859,10 @@
 .results-wrapper {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2rem) 4rem;
+  padding: 0 clamp(1rem, 4vw, 2rem) 4rem; /* Creates responsive padding - where narrow phones will have 1rem and wide screens will have 2rem */
 }
 
-.results-summary {
+.results-summary { /* Displays a summary of trip results */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -895,12 +885,12 @@
 }
 
 .results-tags {
-  display: flex;
-  flex-wrap: wrap;
+  display: flex; /* Lays the tags out in a row */
+  flex-wrap: wrap; 
   gap: 0.4rem;
 }
 
-.results-tag {
+.results-tag { 
   font-family: 'Montserrat', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
@@ -910,7 +900,7 @@
   padding: 0.25rem 0.75rem;
 }
 
-.results-tag.tag-green {
+.results-tag.tag-green { /* Uses the modifier class to adjust tag to green */
   background: color-mix(in srgb, var(--accent-2) 12%, transparent);
   color: var(--accent-2);
 }
@@ -918,7 +908,7 @@
 .results-controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Puts count text on the left, and the sort on the right */
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
@@ -957,7 +947,7 @@
 
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Autofills columns that are 300px wide or more, which expands to fill all available space */
   gap: 1.25rem;
 }
 
@@ -969,7 +959,7 @@
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stacks the sections vertically */
 }
 
 .activity-card:hover {
@@ -979,14 +969,14 @@
 }
 
 .activity-card:focus {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--accent); /* Creates a visible outline, using the accent colour */
   outline-offset: 2px;
 }
 
 .activity-card-img {
   width: 100%;
   height: 180px;
-  background: var(--border);
+  background: var(--border); /* Has a placeholder background colour if the card has no image */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -995,12 +985,12 @@
 }
 
 .activity-card-img::before {
-  content: '';
+  content: ''; /* Renders an empty element */
   width: 28px;
   height: 28px;
   border: 2.5px solid var(--text-muted);
   border-radius: 50%;
-  opacity: 0.35;
+  opacity: 0.35; /* Presents as a faint placeholder */
   position: absolute;
 }
 
@@ -1013,31 +1003,31 @@
   opacity: 0.35;
 }
 
-.activity-card-img:has(img)::before,
-.activity-card-img:has(img)::after {
-  display: none;
+.activity-card-img:has(img)::before, .activity-card-img:has(img)::after 
+{
+  display: none; /* Hides the placeholders if an actual image is present */
 }
 
 .activity-card-body {
   padding: 1.1rem 1.2rem;
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Vertically stacks */
+  flex-direction: column; 
   gap: 0.5rem;
-  flex: 1;
+  flex: 1; /* Fills the remaining card height */
 }
 
 .activity-type-badge {
-  display: inline-block;
+  display: inline-block; /* Shrinks to fit the text */
   font-family: 'Montserrat', sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  text-transform: uppercase; 
+  letter-spacing: 0.06em; /* Improves readability of uppercase text */
   background: color-mix(in srgb, var(--accent-2) 12%, transparent);
   color: var(--accent-2);
   border-radius: 999px;
   padding: 0.2rem 0.65rem;
-  align-self: flex-start;
+  align-self: flex-start; /* Stops it stretching the full width inside the flex column */
 }
 
 .activity-card-name {
@@ -1051,7 +1041,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 0.78rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.6; 
   flex: 1;
 }
 
@@ -1060,18 +1050,20 @@
   font-size: 0.72rem;
   color: var(--accent-2);
   text-decoration: none;
-  white-space: nowrap;
+  white-space: nowrap; /* Doesn't allow the URL to go onto a second line */
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; /* Instead of allowing URLs to go on indefinitely, inserts '...' to shorten it */
   display: block;
 }
 
-.activity-card-url:hover { text-decoration: underline; }
+.activity-card-url:hover { 
+  text-decoration: underline; /* Gives the user feedback that it's interactive */
+}
 
 .activity-card-meta {
-  display: flex;
+  display: flex; /* Displays the price and distance side by side */
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Displays price on the left, and distance on the right */
   padding-top: 0.6rem;
   border-top: 1px solid var(--border);
   margin-top: auto;
@@ -1084,7 +1076,9 @@
   color: var(--accent);
 }
 
-.activity-price.free { color: var(--accent-2); }
+.activity-price.free { 
+  color: var(--accent-2); /* Overrides to green if the activity is free */
+}
 
 .activity-distance {
   font-family: 'Montserrat', sans-serif;
@@ -1101,7 +1095,7 @@
   display: none;
 }
 
-.results-empty h2 {
+.results-empty h2 { 
   font-family: 'Madimi One', sans-serif;
   font-size: 1.5rem;
   color: var(--text);
@@ -1134,7 +1128,7 @@
   box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 40%, transparent);
 }
 
-.skeleton-card {
+.skeleton-card { /* Creates skeleton cards as placeholders, while actual cards are loading */
   background: var(--bg-card);
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
@@ -1145,8 +1139,8 @@
 .skeleton-img {
   width: 100%;
   height: 180px;
-  background: var(--border);
-  animation: shimmer 1.5s infinite;
+  background: var(--border); 
+  animation: shimmer 1.5s infinite; /* Indicates loading */
 }
 
 .skeleton-body {
@@ -1163,30 +1157,37 @@
   animation: shimmer 1.5s infinite;
 }
 
-.skeleton-line.short {
+.skeleton-line.short { /* Appears like a small piece of text */
    width: 40%; 
   }
 
-.skeleton-line.medium { 
+.skeleton-line.medium { /* Appears like a medium line, such as a title */
    width: 70%; 
   }
 
-.skeleton-line.long {
+.skeleton-line.long { /* Appears as a full line, such as a description */
   width: 100%; 
   }
 
+
 @keyframes shimmer {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.4; }
+  0%, 100% { 
+    opacity: 1; /* Fully visible at the beginning and end */
+  } 
+  50%       { 
+    opacity: 0.4; /* Creates a pulse, going in and out */
+  }
 }
 
 @media (max-width: 600px) {
-  .results-grid { grid-template-columns: 1fr; }
+  .results-grid { 
+    grid-template-columns: 1fr; /* Collapses the multi column to a single column on smaller screens */
+  }
 }
 
 .about-section,
 .what-we-do-section {
-  padding: 3rem 2 rem;
+  padding: 3rem 2rem;
   max-width: 900px;
   margin: 0 auto;
 }
@@ -1201,7 +1202,7 @@
 }
 
 .about-container h2 {
-  font-size: 1.5 rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
@@ -1213,7 +1214,7 @@
 
 .what-we-do-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* Creates 2 equal columns, side by side */
   gap: 1.25rem;
   margin-top: 1.75rem;
 }
@@ -1222,16 +1223,16 @@
   background: var(--card-bg, #f9f7f4);
   border: 1px solid var(--card-border, #e0ddd8);
   border-radius: 10px;
-  padding: 1.25 rem 1.25 rem 1.5 rem;
+  padding: 1.25rem 1.25rem 1.5rem;
 }
 
 .what-we-do-card h3 {
-  font-size: 1 rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .what-we-do-card p {
-  font-size: 0.9 rem;
+  font-size: 0.9rem;
   line-height: 1.7;
   margin: 0;
 }
@@ -1244,16 +1245,16 @@ body.dark-mode .what-we-do-card {
 @media (max-width: 768px) {
   .about-section,
   .what-we-do-section {
-    padding: 2 rem 1.25 rem;
+    padding: 2rem 1.25 rem;
   }
 }
 
 .about-container h1 {
-  font-size: 1.6 rem;
+  font-size: 1.6rem;
 }
 
 .about-container h2 {
-  font-size: 1.3 rem;
+  font-size: 1.3rem;
 }
 
 .what-we-do-grid {
@@ -1264,12 +1265,12 @@ body.dark-mode .what-we-do-card {
 @media (max-width: 480px) {
   .about-section,
   .what-we-do-section {
-    padding: 1.5 rem 1 rem;
+    padding: 1.5rem 1rem;
   }
 }
 
 .about-container h1 {
-  font-size: 1.4 rem;
+  font-size: 1.4rem;
 }
 
 .about-container h2 {
@@ -1277,7 +1278,7 @@ body.dark-mode .what-we-do-card {
 }
 
 .about-container p {
-  font-size: 0.95 rem;
+  font-size: 0.95rem;
 }
 
 .what-we-do-grid {
